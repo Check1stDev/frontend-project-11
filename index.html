@@ -7,21 +7,57 @@
     <title>frontend-project-11</title>
   </head>
   <body>
-    <div id="app">
-      <main>
-        <section>
-          <div class="container">
-            <h1>RSS-агрегатор</h1>
-            <p>Добавьте ссылку на RSS-канал</p>
-            <form>
-              <input class="form-control" type="url" placeholder="Ссылка RSS" />
-              <button class="btn btn-primary" type="submit">Добавить</button>
-            </form>
+    <div id="app" class="min-vh-100 d-flex flex-column">
+      <header class="hero-section text-white py-5">
+        <div class="container py-5">
+          <div class="row justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1 class="display-3 fw-bold mb-3">RSS-агрегатор</h1>
+              <p class="lead text-warning mb-4">Соберите любимые блоги и новости в одном месте. Добавьте RSS-ссылку и следите за обновлениями без лишнего шума.</p>
+              <form class="rss-form mx-auto p-2 bg-white rounded-4 shadow-lg">
+                <div class="input-group input-group-lg">
+                  <label class="visually-hidden" for="rss-url">RSS-ссылка</label>
+                  <input id="rss-url" class="form-control border-0" type="url" name="url" required placeholder="https://example.com/feed" aria-label="RSS URL" />
+                  <button class="btn btn-warning fw-semibold px-4" type="submit">Добавить</button>
+                </div>
+              </form>
+              <p class="small text-white-50 mt-3 mb-0">Пример: https://lorem-rss.hexlet.app/feed</p>
+            </div>
           </div>
-        </section>
+        </div>
+      </header>
+
+      <main class="flex-grow-1 py-5 page-section">
+        <div class="container">
+          <div class="row g-4 text-center">
+            <div class="col-md-4">
+              <div class="p-4 bg-white rounded-4 shadow-sm h-100">
+                <h2 class="h5 mb-3">Добавляйте источники</h2>
+                <p class="text-muted mb-0">Подключайте RSS-каналы блогов, медиа и проектов, которые хотите читать регулярно.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="p-4 bg-white rounded-4 shadow-sm h-100">
+                <h2 class="h5 mb-3">Следите за обновлениями</h2>
+                <p class="text-muted mb-0">Новые посты будут появляться в одном списке, без необходимости открывать каждый сайт отдельно.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="p-4 bg-white rounded-4 shadow-sm h-100">
+                <h2 class="h5 mb-3">Читайте удобно</h2>
+                <p class="text-muted mb-0">Проект станет основой для тренировки работы с формами, состоянием, запросами и промисами.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
+
+      <footer class="py-4 bg-white border-top">
+        <div class="container text-center text-muted small">
+          Created by Check1stDev as a Hexlet frontend project
+        </div>
+      </footer>
     </div>
     <script type="module" src="/src/main.js"></script>
-    
   </body>
 </html>
