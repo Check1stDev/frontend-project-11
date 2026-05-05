@@ -12,26 +12,29 @@
         <div class="container py-5">
           <div class="row justify-content-center text-center">
             <div class="col-lg-8">
-              <h1 class="display-3 fw-bold mb-3">RSS-агрегатор</h1>
-              <p class="lead text-warning mb-4">Соберите любимые блоги и новости в одном месте. Добавьте RSS-ссылку и следите за обновлениями без лишнего шума.</p>
+              <h1 class="display-3 fw-bold mb-3" data-i18n="app.title">RSS-агрегатор</h1>
+              <p class="lead text-warning mb-4" data-i18n="app.description">Соберите любимые блоги и новости в одном месте. Добавьте RSS-ссылку и следите за обновлениями без лишнего шума.</p>
               <form class="rss-form mx-auto p-2 bg-white rounded-4 shadow-lg" data-form="rss" novalidate>
                 <div class="input-group input-group-lg">
-                  <label class="visually-hidden" for="rss-url">Ссылка RSS</label>
-                  <input
-                    id="rss-url"
-                    class="form-control border-0"
-                    type="url"
-                    name="url"
-                    required
-                    placeholder="https://example.com/feed"
-                    aria-label="Ссылка RSS"
-                    aria-describedby="rss-feedback"
-                  />
-                  <button class="btn btn-warning fw-semibold px-4" type="submit">Добавить</button>
+                  <div class="rss-input-wrapper flex-grow-1 text-start">
+                    <label class="rss-input-label text-black opacity-75 small" for="rss-url" data-i18n="form.label">Ссылка RSS</label>
+                    <input
+                      id="rss-url"
+                      class="form-control border-0 py-0"
+                      type="url"
+                      name="url"
+                      required
+                      placeholder="https://example.com/feed"
+                      data-i18n="form.placeholder"
+                      aria-label="Ссылка RSS"
+                      aria-describedby="rss-feedback"
+                    />
+                  </div>
+                  <button class="btn btn-warning fw-semibold px-4" type="submit" data-i18n="form.submit">Добавить</button>
                 </div>
               </form>
               <p id="rss-feedback" class="invalid-feedback d-block small mt-2 mb-0"></p>
-              <p class="small text-white-50 mt-3 mb-0">Пример: https://lorem-rss.hexlet.app/feed</p>
+              <p class="small text-black-50 mt-3 mb-0" data-i18n="form.example">Пример: https://lorem-rss.hexlet.app/feed</p>
             </div>
           </div>
         </div>
