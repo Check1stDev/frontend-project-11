@@ -6,7 +6,8 @@ export default (state, elements, i18n) => {
         feeds.forEach((feed) => {
             const crLi = document.createElement('li')
                 crLi.classList.add('mb-3')
-            const crTitle = document.createElement('h2')
+            const crTitle = document.createElement('p')
+                crTitle.classList.add('feed-title')
                 crTitle.textContent = feed.title
             const crDesc = document.createElement('p')
                 crDesc.classList.add('text-muted', 'small', 'mb-0')
@@ -15,16 +16,21 @@ export default (state, elements, i18n) => {
             elements.feedsContainer.append(crLi)
         })
     }
-    const renderPosts = (posts) => {
+    const renderPosts = (posts, readPosts) => {
         elements.postsContainer.innerHTML = ''
         posts.forEach((post) => {
             const crLi = document.createElement('li')
-                crLi.classList.add('mb-3')
+                crLi.classList.add('mb-3', 'd-flex', 'justify-content-between', 'align-items-center')
             const a = document.createElement('a')
                 a.href = post.link
                 a.textContent = post.title
                 a.classList.add('fs-5')
-            crLi.append(a)
+                a.classList.add(readPosts.includes(post.id) ? 'post-visited' : 'text-primary' )
+            const btn = document.createElement('button')
+            btn.textContent = 'Просмотр'
+            btn.classList.add('btn', 'btn-warning', 'fw-semibold', 'btn-sm')
+            btn.dataset.id = post.id
+            crLi.append(a, btn)
             elements.postsContainer.append(crLi)
         })
     }
@@ -49,7 +55,7 @@ export default (state, elements, i18n) => {
       if (obj.feeds.length > 0) {
         elements.feedsPostsSection.classList.remove('hidden')
         renderFeeds(obj.feeds)
-        renderPosts(obj.posts)
+        renderPosts(obj.posts, obj.readPosts)
       }
     }
     subscribe(state, render)

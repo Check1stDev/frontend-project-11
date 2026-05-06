@@ -312,6 +312,16 @@ code {
 .rss-form .form-control:focus {
   box-shadow: none;
 }
+
 .hidden {
   display: none !important;
+}
+
+.feed-title {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: -0.24px;
+  line-height: 118%;
+  color: var(--text-h);
+  margin: 0 0 8px;
 }

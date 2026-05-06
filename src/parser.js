@@ -11,7 +11,8 @@ const parse = (xmlString) => {
     const parsedItems = items.map((item) => {
         const title = item.querySelector('title').textContent;
         const link = item.querySelector('link').textContent;
-        return { title, link }
+        const description = item.querySelector('description').textContent;
+        return { title, link, description }
     })
     return {
         channel: {

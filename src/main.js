@@ -7,6 +7,7 @@ import resources from './locales/index.js'
 import fetchFeed from './api.js'
 import parse from './parser.js'
 import { v4 as uuidv4 } from 'uuid';
+import * as bootstrap from 'bootstrap'
 
 i18n
   .init({
@@ -22,6 +23,7 @@ i18n
         status: 'filling',
         error: null,
       },
+      readPosts: []
     })
     const getSchema = (feeds) => {
       return yup
@@ -46,6 +48,11 @@ i18n
       feedsContainer: document.querySelector('[data-container="feeds"]'),
       postsContainer: document.querySelector('[data-container="posts"]'),
       feedsPostsSection: document.getElementById('feeds-posts-section'),
+      //Модальное окно
+      modalDescription: document.querySelector('#modalDescription'),
+      modalTitle: document.querySelector('#modalTitle'),
+      modalReadLink: document.querySelector('#modalReadLink'),
+      postModal: document.querySelector('#postModal')
     }
 
     initView(state, elements, i18n)
@@ -71,7 +78,8 @@ i18n
           id: uuidv4(),
           feedId: countId,
           title: arrFeedItems.title,
-          link: arrFeedItems.link
+          link: arrFeedItems.link,
+          description: arrFeedItems.description
           }
 
         }
@@ -95,7 +103,8 @@ i18n
           id: uuidv4(),
           feedId: feed.id,
           title: arrFeedItems.title,
-          link: arrFeedItems.link
+          link: arrFeedItems.link,
+          description: arrFeedItems.description
           }
         }
           newPosts.forEach((item) => {
@@ -128,5 +137,18 @@ i18n
           state.form.error = err.message
         })
 
+    })
+
+    elements.postsContainer.addEventListener('click', (e) => {
+      e.preventDefault()
+      if (e.target.dataset.id) {
+        const clickPost = state.posts.find((post) => post.id === e.target.dataset.id)
+        elements.modalDescription.textContent = clickPost.description
+        elements.modalTitle.textContent = clickPost.title
+        elements.modalReadLink.href = clickPost.link
+        const modal = new bootstrap.Modal(elements.postModal)
+        modal.show()
+        state.readPosts.push(e.target.dataset.id)
+      } 
     })
   })
