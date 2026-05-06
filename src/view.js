@@ -6,7 +6,7 @@ export default (state, elements, i18n) => {
         feeds.forEach((feed) => {
             const crLi = document.createElement('li')
                 crLi.classList.add('mb-3')
-            const crTitle = document.createElement('p')
+            const crTitle = document.createElement('h3')
                 crTitle.classList.add('feed-title')
                 crTitle.textContent = feed.title
             const crDesc = document.createElement('p')
