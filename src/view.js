@@ -1,6 +1,33 @@
 import { snapshot, subscribe } from "valtio/vanilla";
 
 export default (state, elements, i18n) => {
+    const renderFeeds = (feeds) => {
+        elements.feedsContainer.innerHTML = '';
+        feeds.forEach((feed) => {
+            const crLi = document.createElement('li')
+                crLi.classList.add('mb-3')
+            const crTitle = document.createElement('h2')
+                crTitle.textContent = feed.title
+            const crDesc = document.createElement('p')
+                crDesc.classList.add('text-muted', 'small', 'mb-0')
+                crDesc.textContent = feed.description
+            crLi.append(crTitle, crDesc)
+            elements.feedsContainer.append(crLi)
+        })
+    }
+    const renderPosts = (posts) => {
+        elements.postsContainer.innerHTML = ''
+        posts.forEach((post) => {
+            const crLi = document.createElement('li')
+                crLi.classList.add('mb-3')
+            const a = document.createElement('a')
+                a.href = post.link
+                a.textContent = post.title
+                a.classList.add('fs-5')
+            crLi.append(a)
+            elements.postsContainer.append(crLi)
+        })
+    }
     const render = () => {
       const obj = snapshot(state)
       elements.title.textContent = i18n.t('app.title')
@@ -19,6 +46,11 @@ export default (state, elements, i18n) => {
     elements.form.classList.remove('rss-form-invalid')
     elements.input.removeAttribute('aria-invalid')
     elements.feedback.textContent = ''
+      if (obj.feeds.length > 0) {
+        elements.feedsPostsSection.classList.remove('hidden')
+        renderFeeds(obj.feeds)
+        renderPosts(obj.posts)
+      }
     }
     subscribe(state, render)
     render()

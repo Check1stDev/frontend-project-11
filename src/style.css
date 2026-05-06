@@ -312,3 +312,6 @@ code {
 .rss-form .form-control:focus {
   box-shadow: none;
 }
+.hidden {
+  display: none !important;
+}

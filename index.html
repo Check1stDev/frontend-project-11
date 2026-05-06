@@ -39,32 +39,44 @@
           </div>
         </div>
       </header>
-
       <main class="flex-grow-1 py-5 page-section">
         <div class="container">
           <div class="row g-4 text-center">
             <div class="col-md-4">
               <div class="p-4 bg-white rounded-4 shadow-sm h-100">
                 <h2 class="h5 mb-3">Добавляйте источники</h2>
-                <p class="text-muted mb-0">Подключайте RSS-каналы блогов, медиа и проектов, которые хотите читать регулярно.</p>
+                <p class="text-muted mb-0">Подключайте RSS-каналы блогов, медиа и проектов.</p>
               </div>
             </div>
             <div class="col-md-4">
               <div class="p-4 bg-white rounded-4 shadow-sm h-100">
                 <h2 class="h5 mb-3">Следите за обновлениями</h2>
-                <p class="text-muted mb-0">Новые посты будут появляться в одном списке, без необходимости открывать каждый сайт отдельно.</p>
+                <p class="text-muted mb-0">Новые посты будут появляться в одном списке.</p>
               </div>
             </div>
             <div class="col-md-4">
               <div class="p-4 bg-white rounded-4 shadow-sm h-100">
                 <h2 class="h5 mb-3">Читайте удобно</h2>
-                <p class="text-muted mb-0">Проект станет основой для тренировки работы с формами, состоянием, запросами и промисами.</p>
+                <p class="text-muted mb-0">Работа с формами, состоянием, запросами и промисами.</p>
+              </div>
+            </div>
+          </div>
+          <div class="row g-4 mt-2 hidden" id="feeds-posts-section">
+            <div class="col-md-4">
+              <div class="p-4 bg-white rounded-4 shadow-sm h-100">
+                <h2 class="h5 mb-3 border-bottom pb-2">Фиды</h2>
+                <ul class="list-unstyled mb-0" data-container="feeds"></ul>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="p-4 bg-white rounded-4 shadow-sm h-100">
+                <h2 class="h5 mb-3 border-bottom pb-2">Посты</h2>
+                <ul class="list-unstyled mb-0" data-container="posts"></ul>
               </div>
             </div>
           </div>
         </div>
       </main>
-
       <footer class="py-4 bg-white border-top">
         <div class="container text-center text-muted small">
           Created by Check1stDev as a Hexlet frontend project
