@@ -21,10 +21,10 @@ export default {
         duplicate: 'RSS уже существует',
         invalidRss: 'Ресурс не содержит валидный RSS',
         network: 'Ошибка сети',
-        },
-        success: {
+      },
+      success: {
         loaded: 'RSS успешно загружен',
-        }
+      },
     },
   },
 }
