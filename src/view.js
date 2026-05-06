@@ -25,7 +25,11 @@ export default (state, elements, i18n) => {
                 a.href = post.link
                 a.textContent = post.title
                 a.classList.add('fs-5')
-                a.classList.add(readPosts.includes(post.id) ? 'post-visited' : 'text-primary' )
+                if (readPosts.includes(post.id)) {
+                    a.classList.add('post-visited', 'fw-normal')
+                    } else {
+                    a.classList.add('text-primary', 'fw-bold')
+                    }
             const btn = document.createElement('button')
             btn.textContent = 'Просмотр'
             btn.classList.add('btn', 'btn-warning', 'fw-semibold', 'btn-sm')
