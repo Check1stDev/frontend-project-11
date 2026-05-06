@@ -3,7 +3,7 @@ const parse = (xmlString) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(xmlString, 'application/xml');
     if (doc.querySelector('parsererror')) {
-        throw new Error('Ошибка загрузки RSS')
+        throw new Error('errors.invalidRss')
     }
     const channelTitle = doc.querySelector('channel title').textContent;
     const channelDescription = doc.querySelector('channel description').textContent;

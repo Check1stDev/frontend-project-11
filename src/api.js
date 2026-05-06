@@ -7,7 +7,7 @@ const fetchFeed = (url) => {
             return response.data.contents
         })
         .catch(() => {
-            throw new Error('Network error')
+            throw new Error('errors.network')
         })
 } 
 

@@ -58,7 +58,7 @@ i18n
     initView(state, elements, i18n)
 
     const addFeed = (url) => {
-      fetchFeed(url)
+      return fetchFeed(url)
       .then((xmlString) => {
         const arrFeed = parse(xmlString)
         const feed = state.feeds
@@ -87,7 +87,15 @@ i18n
           arrFeed.items.forEach((item) => {
             posts.push(postItem(item))
           })
-      })
+          state.form.status = 'success'
+            if (state.feeds.length === 1) {
+                updateFeeds(state.feeds)
+              }
+          })
+      .catch((err) => {
+          state.form.status = 'error'
+          state.form.error = err.message
+        })
     };
 
     const updateFeeds = (feeds) => {
@@ -113,7 +121,7 @@ i18n
         })
       });
       setTimeout(() => {
-        updateFeeds(feeds)
+        updateFeeds(state.feeds)
         }, 5000);
     }
 
@@ -123,15 +131,14 @@ i18n
       const url = elements.input.value.trim()
       const schema = getSchema(state.feeds)
       schema.validate(url)
-        .then((validUrl) => {
-          state.form.status = 'filling'
-          state.form.error = null
-          addFeed(validUrl)
-          updateFeeds(state.feeds)
-
-          elements.form.reset()
-          elements.input.focus()
-        })
+      .then((validUrl) => {
+        state.form.error = null
+        return addFeed(validUrl)
+      })
+      .then(() => {
+        elements.form.reset()
+        elements.input.focus()
+      })
         .catch((err) => {
           state.form.status = 'error'
           state.form.error = err.message

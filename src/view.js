@@ -36,6 +36,7 @@ export default (state, elements, i18n) => {
     }
     const render = () => {
       const obj = snapshot(state)
+      console.log(obj.form.status)
       elements.title.textContent = i18n.t('app.title')
       elements.description.textContent = i18n.t('app.description')
       elements.label.textContent = i18n.t('form.label')
@@ -47,8 +48,10 @@ export default (state, elements, i18n) => {
         elements.form.classList.add('rss-form-invalid')
         elements.input.setAttribute('aria-invalid', 'true')
         elements.feedback.textContent = i18n.t(obj.form.error)
+        elements.feedback.classList.add('text-danger')
         return
       }
+      
     elements.form.classList.remove('rss-form-invalid')
     elements.input.removeAttribute('aria-invalid')
     elements.feedback.textContent = ''
@@ -57,6 +60,11 @@ export default (state, elements, i18n) => {
         renderFeeds(obj.feeds)
         renderPosts(obj.posts, obj.readPosts)
       }
+      if (obj.form.status === 'success') {
+        elements.feedback.textContent = i18n.t('success.loaded')
+        elements.feedback.classList.add('text-success')
+        elements.feedback.classList.remove('text-danger')
+        }
     }
     subscribe(state, render)
     render()
