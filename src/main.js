@@ -52,7 +52,7 @@ i18n
       modalDescription: document.querySelector('#modalDescription'),
       modalTitle: document.querySelector('#modalTitle'),
       modalReadLink: document.querySelector('#modalReadLink'),
-      postModal: document.querySelector('#postModal')
+      modal: document.querySelector('#modal')
     }
 
     initView(state, elements, i18n)
@@ -153,7 +153,7 @@ i18n
         elements.modalDescription.textContent = clickPost.description
         elements.modalTitle.textContent = clickPost.title
         elements.modalReadLink.href = clickPost.link
-        const modal = new bootstrap.Modal(elements.postModal)
+        const modal = new bootstrap.Modal(elements.modal)
         modal.show()
         state.readPosts.push(e.target.dataset.id)
       } 
