@@ -82,6 +82,33 @@ i18n
       })
     };
 
+    const updateFeeds = (feeds) => {
+      feeds.forEach((feed) => {
+      fetchFeed(feed.url)
+        .then((xmlString) => {
+          const arrFeed = parse(xmlString)
+          const newPosts = arrFeed.items.filter((item) => {
+              return !state.posts.some((post) => post.link === item.link)
+          })
+          const postItem = (arrFeedItems) => {
+          return {
+          id: uuidv4(),
+          feedId: feed.id,
+          title: arrFeedItems.title,
+          link: arrFeedItems.link
+          }
+        }
+          newPosts.forEach((item) => {
+            state.posts.unshift(postItem(item))
+          })
+        })
+      });
+      setTimeout(() => {
+        updateFeeds(feeds)
+        }, 5000);
+    }
+
+
     elements.form.addEventListener('submit', (e) => {
       e.preventDefault()
       const url = elements.input.value.trim()
@@ -91,6 +118,7 @@ i18n
           state.form.status = 'filling'
           state.form.error = null
           addFeed(validUrl)
+          updateFeeds(state.feeds)
 
           elements.form.reset()
           elements.input.focus()
