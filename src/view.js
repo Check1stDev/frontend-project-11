@@ -54,10 +54,10 @@ export default (state, elements, i18n) => {
       elements.input.setAttribute('aria-invalid', 'true')
       elements.feedback.textContent = i18n.t(obj.form.error)
       elements.feedback.classList.add('text-danger')
+      elements.form.classList.remove('rss-form-valid')
       return
     }
 
-    elements.form.classList.remove('rss-form-invalid')
     elements.input.removeAttribute('aria-invalid')
     elements.feedback.textContent = ''
     if (obj.feeds.length > 0) {
@@ -69,6 +69,7 @@ export default (state, elements, i18n) => {
       elements.feedback.textContent = i18n.t('success.loaded')
       elements.feedback.classList.add('text-success')
       elements.feedback.classList.remove('text-danger')
+      elements.form.classList.add('rss-form-valid')
     }
   }
   subscribe(state, render)
