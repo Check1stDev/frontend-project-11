@@ -26,7 +26,7 @@ export default (state, elements, i18n) => {
                 a.textContent = post.title
                 a.classList.add('fs-5')
                 if (readPosts.includes(post.id)) {
-                    a.classList.add('post-visited', 'fw-normal')
+                    a.classList.add('link-secondary' , 'fw-normal')
                     } else {
                     a.classList.add('text-primary', 'fw-bold')
                     }
